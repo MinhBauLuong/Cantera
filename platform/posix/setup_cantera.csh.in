@@ -1,0 +1,24 @@
+#!/bin/csh
+
+if ($?LD_LIBRARY_PATH) then
+    setenv LD_LIBRARY_PATH @ct_libdir@:${LD_LIBRARY_PATH}
+else
+    setenv LD_LIBRARY_PATH @ct_libdir@
+endif
+
+setenv PYTHON_CMD @python_cmd@
+
+setenv PATH @ct_bindir@:${PATH}
+
+if ($?PYTHONPATH) then
+     setenv PYTHONPATH @python_module_loc@:${PYTHONPATH}
+else
+     setenv PYTHONPATH @python_module_loc@
+endif  
+
+## Uncomment this if you want to specify the tmp dir location where
+## Cantera writes temporary files. The default is:
+##     (1) getenv("TMP")
+##     (2) getenv("TEMP")
+##     (3) "."
+# setenv CANTERA_TMPDIR /fill/in
