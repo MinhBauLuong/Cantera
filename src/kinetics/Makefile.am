@@ -2,7 +2,7 @@
 h_sources  = $(top_builddir)/include/cantera/kinetics/importKinetics.h \
              $(top_builddir)/include/cantera/kinetics/GRI_30_Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/LULAWANA19Kinetics.h \
-             $(top_builddir)/include/cantera/kinetics/TESTKinetics.h \
+             $(top_builddir)/include/cantera/kinetics/ETHANOL28Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/SANKARAN13Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/DME30Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/KineticsFactory.h \
@@ -28,7 +28,7 @@ h_sources  = $(top_builddir)/include/cantera/kinetics/importKinetics.h \
 #             $(top_builddir)/include/cantera/kinetics/ImplicitSurfChem.h 
 
 cc_sources = AqueousKinetics.cpp FalloffFactory.cpp GRI_30_Kinetics.cpp \
-             LULAWANA19Kinetics.cpp TESTKinetics.cpp SANKARAN13Kinetics.cpp DME30Kinetics.cpp \
+             LULAWANA19Kinetics.cpp ETHANOL28Kinetics.cpp SANKARAN13Kinetics.cpp DME30Kinetics.cpp \
              GasKinetics.cpp Group.cpp ImplicitSurfChem.cpp InterfaceKinetics.cpp \
              Kinetics.cpp KineticsFactory.cpp ReactionPath.cpp ReactionStoichMgr.cpp \
              importKinetics.cpp solveSP.cpp

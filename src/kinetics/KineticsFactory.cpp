@@ -13,7 +13,7 @@
 #include "cantera/kinetics/AqueousKinetics.h"
 
 #include "cantera/kinetics/LULAWANA19Kinetics.h"
-#include "cantera/kinetics/TESTKinetics.h"
+#include "cantera/kinetics/ETHANOL28Kinetics.h"
 #include "cantera/kinetics/SANKARAN13Kinetics.h"
 #include "cantera/kinetics/DME30Kinetics.h"
 #include  <iostream>
@@ -28,11 +28,11 @@ mutex_t KineticsFactory::kinetics_mutex;
 
 static int ntypes = 10;
 static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics",\
-                          "LULAWANA19", "TEST", "SANKARAN13", "DME30"};
+                          "LULAWANA19", "ETHANOL28", "SANKARAN13", "DME30"};
 //static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics", "LULAWANA19"};
 //static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics,
 static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics,\
-                         cLULAWANA19Kinetics, cTESTKinetics, cSANKARAN13Kinetics, cDME30Kinetics};
+                         cLULAWANA19Kinetics, cETHANOL28Kinetics, cSANKARAN13Kinetics, cDME30Kinetics};
 
 Kinetics* KineticsFactory::
 newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
@@ -93,8 +93,8 @@ newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
-    case cTESTKinetics:
-        k = new TESTKinetics;
+    case cETHANOL28Kinetics:
+        k = new ETHANOL28Kinetics;
         //printf("You are blabla");
         break;
 
@@ -150,8 +150,8 @@ Kinetics* KineticsFactory::newKinetics(const string& model)
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
-    case cTESTKinetics:
-       k = new TESTKinetics;
+    case cETHANOL28Kinetics:
+       k = new ETHANOL28Kinetics;
         //printf("You are blabla");
         break;
 

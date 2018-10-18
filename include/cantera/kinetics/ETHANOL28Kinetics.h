@@ -1,32 +1,32 @@
 /**
- * @file TESTKinetics.h
+ * @file ETHANOL28Kinetics.h
  *
  * @ingroup chemkinetics
  */
 
 // Author T. Jaravel
 
-#ifndef CT_TEST_KINETICS_H
-#define CT_TEST_KINETICS_H
+#ifndef CT_ETHANOL28_KINETICS_H
+#define CT_ETHANOL28_KINETICS_H
 
 #include "GasKinetics.h"
 
 namespace Cantera
 {
-const int cTESTKinetics = 155;
+const int cETHANOL28Kinetics = 155;
 
 /**
  *  Kinetics manager implementing reaction mechanism GRI-Mech 3.0
  *  @deprecated
  */
-class TESTKinetics : public GasKinetics
+class ETHANOL28Kinetics : public GasKinetics
 {
 public:
     /// Default constructor.
-    TESTKinetics(thermo_t* th=0);
+    ETHANOL28Kinetics(thermo_t* th=0);
 
     virtual int type() const {
-        return cTESTKinetics;
+        return cETHANOL28Kinetics;
     }
 
     virtual void getNetProductionRates(doublereal* net) {
