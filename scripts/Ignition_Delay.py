@@ -2,34 +2,34 @@ import numpy as np
 import cantera as ct
 import matplotlib.pyplot as plt
 
-def init_plotting():
-    plt.rcParams['figure.figsize'] = (10, 5)
-    plt.rcParams['font.size'] = 10
-    plt.rcParams['font.family'] = 'Times New Roman'
-    plt.rcParams['axes.labelsize'] = plt.rcParams['font.size']
-    plt.rcParams['axes.titlesize'] = 1.5*plt.rcParams['font.size']
-    plt.rcParams['legend.fontsize'] = plt.rcParams['font.size']
-    plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
-    plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
-    plt.rcParams['savefig.dpi'] = 600
-    plt.rcParams['xtick.major.size'] = 10
-    plt.rcParams['xtick.minor.size'] = 10
-    plt.rcParams['xtick.major.width'] = 1
-    plt.rcParams['xtick.minor.width'] = 1
-    plt.rcParams['ytick.major.size'] = 10
-    plt.rcParams['ytick.minor.size'] = 10
-    plt.rcParams['ytick.major.width'] = 1
-    plt.rcParams['ytick.minor.width'] = 1
-    plt.rcParams['legend.frameon'] = False
-    plt.rcParams['legend.loc'] = 'center left'
-    plt.rcParams['axes.linewidth'] = 4
+#def init_plotting():
+#    plt.rcParams['figure.figsize'] = (10, 5)
+#    plt.rcParams['font.size'] = 10
+#    plt.rcParams['font.family'] = 'Times New Roman'
+#    plt.rcParams['axes.labelsize'] = plt.rcParams['font.size']
+#    plt.rcParams['axes.titlesize'] = 1.5*plt.rcParams['font.size']
+#    plt.rcParams['legend.fontsize'] = plt.rcParams['font.size']
+#    plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
+#    plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
+#    plt.rcParams['savefig.dpi'] = 600
+#    plt.rcParams['xtick.major.size'] = 10
+#    plt.rcParams['xtick.minor.size'] = 10
+#    plt.rcParams['xtick.major.width'] = 1
+#    plt.rcParams['xtick.minor.width'] = 1
+#    plt.rcParams['ytick.major.size'] = 10
+#    plt.rcParams['ytick.minor.size'] = 10
+#    plt.rcParams['ytick.major.width'] = 1
+#    plt.rcParams['ytick.minor.width'] = 1
+#    plt.rcParams['legend.frameon'] = False
+#    plt.rcParams['legend.loc'] = 'center left'
+#    plt.rcParams['axes.linewidth'] = 4
 
-    plt.gca().spines['right'].set_color('none')
-    plt.gca().spines['top'].set_color('none')
-    plt.gca().xaxis.set_ticks_position('bottom')
-    plt.gca().yaxis.set_ticks_position('left')
+#    plt.gca().spines['right'].set_color('none')
+#    plt.gca().spines['top'].set_color('none')
+#    plt.gca().xaxis.set_ticks_position('bottom')
+#    plt.gca().yaxis.set_ticks_position('left')
 
-init_plotting()
+#init_plotting()
 
 phi1 = 0.4
 phi2 = 0.4
@@ -49,7 +49,7 @@ temp = np.zeros((temp_total_steps, phi_total_steps))
 temp_array = np.zeros((i,temp_total_steps))
 total_temp_array = np.zeros((i*phi_total_steps, temp_total_steps))
 total_hrr = np.zeros((i*phi_total_steps, temp_total_steps))
-gas = ct.Solution('dme39.cti')
+gas = ct.Solution('dme30.xml')
 io2 = gas.species_index('O2'); #Index of O2 in mix
 in2 = gas.species_index('N2'); #Index of N2 in mix
 ich3och3 = gas.species_index('CH3OCH3'); #Index of CH3OCH3 in mix
@@ -66,7 +66,7 @@ for phi in np.arange(phi1, phi2+0.001, phi_step):
         temp_idx += 1
         composition[ich3och3] = phi
         composition[io2] = 3.0
-        composition[in2] = 3*3.76
+        composition[in2] = 3.0*3.76
         composition[ich4] = 0.0
         gas.TPX = t, pressure, composition
         r = ct.IdealGasConstPressureReactor(gas)
@@ -143,5 +143,5 @@ plt.plot(times,total_temp_array[0:i,0], 'blue',  label = 'T=%.f'%t1) #marker = "
 #plt.title('HRR Vs. t for %s-Air at T=%.f, P=%.f, Phi=%.1f'%(gas.species_name(ich3och3), t1, pressure/ct.one_atm, phi1))
 #plt.legend()
 #plt.legend(bbox_to_anchor=(1.01,1.0), loc=2, borderaxespad=0.)
-plt.show()
+#plt.show()
 

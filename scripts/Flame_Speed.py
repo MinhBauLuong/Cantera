@@ -8,7 +8,7 @@
 
 from cantera import *
 from matplotlib.pylab import *
-import numpy
+import numpy as np
 #Functions :
 
 #################################################################
@@ -17,18 +17,18 @@ import numpy
 #Parameter values :
 	
 	#General
-p          =   101325                 # pressure
-tin        =   300.0               # unburned gas temperature
-phi        =   1.0
+p          =  20.0*one_atm                 # pressure
+tin        =   800.0               # unburned gas temperature
+phi        =   0.4
 
 
 	#Initial grids, chosen to be 0.02cm long : 
 		# - Refined grid at inlet and outlet, 6 points in x-direction :
-initial_grid = 2*array([0.0, 0.001, 0.01, 0.02, 0.029, 0.03],'d')/3 # m
+initial_grid = [0.0, 0.0011, 0.0012, 0.013, 0.0198, 0.0199, 0.02] # m
 		# - Uniform grid, 6 points in x-direction (import numpy):
 #initial_grid = 0.02*array([0.0, 0.2, 0.4, 0.6, 0.8, 1.0],'d') # m
 		# - Uniform grid of 300 points using numpy :
-#initial_grid = numpy.linspace(0,0.02 , 300)
+#initial_grid = np.linspace(0,0.02 , 10)
 
 #Set tolerance properties
 tol_ss    = [1.0e-5, 1.0e-8]        # [rtol atol] for steady-state problem
@@ -41,22 +41,20 @@ refine_grid = True                  # True to enable refinement, False to
                                     # disable 				   
 
 #Import gas phases with mixture transport model
-gas = Solution('gri30.cti')
+gas = Solution('dme30.xml')
 #################
 #Stoechiometry :
 
-fuel_species = 'CH4'
+fuel_species = 'CH3OCH3'
 m=gas.n_species
-stoich_O2 = gas.n_atoms(fuel_species,'C') + 0.25*gas.n_atoms(fuel_species,'H')
-air_N2_O2_ratio = 3.76
 ifuel = gas.species_index(fuel_species)
 io2 = gas.species_index('O2')
 in2 = gas.species_index('N2')
 
 x = zeros(m,'d')
 x[ifuel] = phi
-x[io2] = stoich_O2
-x[in2] = stoich_O2*air_N2_O2_ratio
+x[io2] = 3.0
+x[in2] = 3.0*3.76
 
 #################
 #Assembling objects :
@@ -138,8 +136,8 @@ print ('mixture averaged flamespeed = ',f.u[0])
 # Save your results if needed
 #################################################################
 #Write the velocity, temperature, density, and mole fractions to a CSV file
-f.write_csv('ch4_adiabatic.csv', quiet=False)
-f.save('restore.xml','ch4_adiabatic')
+f.write_csv('dme_adiabatic.csv', quiet=False)
+f.save('baseflame000.xml','energy_mix')
 #f.write_avbp('Sol-CAN2AV_P-'+str(p)+'-T-'+str(tin)+'-Phi-'+str(phi)+'.csv', quiet=False)
 
 #################################################################

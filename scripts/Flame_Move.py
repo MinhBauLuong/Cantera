@@ -7,7 +7,7 @@ import numpy as np
 import fileinput
 import matplotlib.pyplot as plt
 
-iterations = 490
+iterations = 1000
 F_S = np.zeros(iterations)
 L = np.zeros(iterations)
 idx = 0
@@ -18,7 +18,7 @@ def solveflame(savefilename):
   refine_grid = True  # 'True' to enable refinement, 'False' to disable
 
   # IdealGasMix object used to compute mixture properties
-  gas = ct.Solution('dme39.xml')
+  gas = ct.Solution('dme30.xml')
   
   # Flame object
   f = ct.FreeFlame(gas)
@@ -27,28 +27,28 @@ def solveflame(savefilename):
 
   f.restore('restart.xml','energy_mix')
   f.transport_model = 'Mix'
-  f.set_max_jac_age(10, 10)
+  f.set_max_jac_age(50, 50)
   f.set_time_step(1e-5, [2, 5, 10, 20, 50])
   f.solve(loglevel, refine_grid)
   f.save(savefilename,'energy_mix', 'solution for a given z left boundary')
   #f.write_csv(csvfilename)
   #print('z = %s S-L = %.15e' %(zstr, f.u[0]))
   F_S[idx] = f.u[0]
-  L[idx] = 0.005-float(zstr) 
+  L[idx] = 0.02-float(zstr) 
   print('L = %.5f, S-L = %.5f' %(L[idx], F_S[idx]))  
 
   
 #----------------------------------------------------------------------
 # MAIN MAIN
 #----------------------------------------------------------------------
-runid='514'
+runid='000'
 zstr='0.00515'
-#newfilename='baseflame'+runid+'.xml'
-newfilename='flame'+runid+'-'+zstr+'.xml'
-delz=0.00001
+newfilename='baseflame'+runid+'.xml'
+#newfilename='flame'+runid+'-'+zstr+'.xml'
+delz=0.0001
 
 for n in range(iterations):
-  runid="%03d"%(n+515)
+  runid="%03d"%(n)
   #----------------------------------------------------------------------
   oldfilename=newfilename
   of=open(oldfilename,'r')
