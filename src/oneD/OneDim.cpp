@@ -405,11 +405,11 @@ void OneDim::save(const std::string& fname, std::string id,
         const XML_Node* same_ID = root.findID(id);
         int jid = 1;
         string idnew = id;
-        while (same_ID != 0) {
+        /*while (same_ID != 0) {
             idnew = id + "_" + int2str(jid);
             jid++;
             same_ID = root.findID(idnew);
-        }
+        }*/
         id = idnew;
         fin.close();
         ct = &root.child("ctml");
