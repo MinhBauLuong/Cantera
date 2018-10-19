@@ -1,32 +1,32 @@
 /**
  *
- * @file SANKARAN13Kinetics.h
+ * @file METHANE13Kinetics.h
  *
  * @ingroup chemkinetics
  */
 // Author T. Jaravel
 
 
-#ifndef CT_SANKARAN13_KINETICS_H
-#define CT_SANKARAN13_KINETICS_H
+#ifndef CT_METHANE13_KINETICS_H
+#define CT_METHANE13_KINETICS_H
 
 #include "GasKinetics.h"
 
 namespace Cantera {
 
-    const int cSANKARAN13Kinetics = 150;
+    const int cMETHANE13Kinetics = 150;
 
     /**
-     *  Kinetics manager implementing reaction mechanism Sankaran
+     *  Kinetics manager implementing reaction mechanism METHANE
      */    
-    class SANKARAN13Kinetics : public GasKinetics {
+    class METHANE13Kinetics : public GasKinetics {
 
     public:
 
         /// Default constructor.
-        SANKARAN13Kinetics(thermo_t* th=0);
+        METHANE13Kinetics(thermo_t* th=0);
 
-        virtual int type() const { return cSANKARAN13Kinetics; }
+        virtual int type() const { return cMETHANE13Kinetics; }
 
         virtual void getNetProductionRates(doublereal* net) {
             get_wdot_reduced(net);

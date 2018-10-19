@@ -12,9 +12,9 @@
 #include "cantera/kinetics/importKinetics.h"
 #include "cantera/kinetics/AqueousKinetics.h"
 
-#include "cantera/kinetics/LULAWANA19Kinetics.h"
+#include "cantera/kinetics/METHANE19Kinetics.h"
 #include "cantera/kinetics/ETHANOL28Kinetics.h"
-#include "cantera/kinetics/SANKARAN13Kinetics.h"
+#include "cantera/kinetics/METHANE13Kinetics.h"
 #include "cantera/kinetics/DME30Kinetics.h"
 #include  <iostream>
 
@@ -28,11 +28,9 @@ mutex_t KineticsFactory::kinetics_mutex;
 
 static int ntypes = 10;
 static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics",\
-                          "LULAWANA19", "ETHANOL28", "SANKARAN13", "DME30"};
-//static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics", "LULAWANA19"};
-//static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics,
+                          "METHANE19", "ETHANOL28", "METHANE13", "DME30"};
 static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics,\
-                         cLULAWANA19Kinetics, cETHANOL28Kinetics, cSANKARAN13Kinetics, cDME30Kinetics};
+                         cMETHANE19Kinetics, cETHANOL28Kinetics, cMETHANE13Kinetics, cDME30Kinetics};
 
 Kinetics* KineticsFactory::
 newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
@@ -88,8 +86,8 @@ newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
         k = new AqueousKinetics;
         break;
 
-    case cLULAWANA19Kinetics:
-        k = new LULAWANA19Kinetics;
+    case cMETHANE19Kinetics:
+        k = new METHANE19Kinetics;
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
@@ -98,8 +96,8 @@ newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
         //printf("You are blabla");
         break;
 
-    case cSANKARAN13Kinetics:
-        k = new SANKARAN13Kinetics;
+    case cMETHANE13Kinetics:
+        k = new METHANE13Kinetics;
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
@@ -145,8 +143,8 @@ Kinetics* KineticsFactory::newKinetics(const string& model)
         k = new InterfaceKinetics;
         break;
 
-    case cLULAWANA19Kinetics:
-        k = new LULAWANA19Kinetics;
+    case cMETHANE19Kinetics:
+        k = new METHANE19Kinetics;
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
@@ -155,8 +153,8 @@ Kinetics* KineticsFactory::newKinetics(const string& model)
         //printf("You are blabla");
         break;
 
-    case cSANKARAN13Kinetics:
-        k = new SANKARAN13Kinetics;
+    case cMETHANE13Kinetics:
+        k = new METHANE13Kinetics;
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 

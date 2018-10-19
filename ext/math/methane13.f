@@ -11,7 +11,7 @@ C     R. Sankaran, E.R. Hawkes, J.H. Chen, T.F. Lu, C.K. Law,
 C     "Structure of a spatially developing turbulent lean methane–air Bunsen flame," 
 C     Proceedings of the Combustion Institute 31 (2007) 1291–1298.
 C
-      SUBROUTINE SANKARAN13  (P, T, Y, WDOT)
+      SUBROUTINE METHANE13  (P, T, Y, WDOT)
       IMPLICIT DOUBLE PRECISION (A-H, O-Z), INTEGER (I-N)
 C
       PARAMETER (RU=8.314510D7, RUC=RU/4.184D7, PATM=1.01325D6)

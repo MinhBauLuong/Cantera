@@ -12,7 +12,7 @@ C       A reduced mechanism for methane oxidation with NO chemistry,"
 C       Combustion and Flame, Vol.154 No.4 pp.761–774, 2008.
 C
 C      SUBROUTINE CKWYP  (P, T, Y, ICKWRK, RCKWRK, WDOT)
-      SUBROUTINE LULAWANA19  (P, T, Y, WDOT)
+      SUBROUTINE METHANE19  (P, T, Y, WDOT)
       IMPLICIT DOUBLE PRECISION (A-H, O-Z), INTEGER (I-N)
 C
 C      DIMENSION ICKWRK(*), RCKWRK(*), WDOT(*), Y(*)
