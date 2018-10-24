@@ -16,6 +16,9 @@
 #include "cantera/kinetics/ETHANOL28Kinetics.h"
 #include "cantera/kinetics/METHANE13Kinetics.h"
 #include "cantera/kinetics/DME30Kinetics.h"
+#include "cantera/kinetics/HEPTANE52Kinetics.h"
+#include "cantera/kinetics/ISOOCTANE99Kinetics.h"
+#include "cantera/kinetics/PRF116Kinetics.h"
 #include  <iostream>
 
 using namespace std;
@@ -26,11 +29,11 @@ namespace Cantera
 KineticsFactory* KineticsFactory::s_factory = 0;
 mutex_t KineticsFactory::kinetics_mutex;
 
-static int ntypes = 10;
-static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics",\
-                          "METHANE19", "ETHANOL28", "METHANE13", "DME30"};
-static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics,\
-                         cMETHANE19Kinetics, cETHANOL28Kinetics, cMETHANE13Kinetics, cDME30Kinetics};
+static int ntypes = 13;
+static string _types[] = {"none", "GasKinetics", "GRI30", "Interface", "Edge", "AqueousKinetics", "METHANE19", \
+                          "ETHANOL28", "METHANE13", "DME30", "HEPTANE52", "ISOOCTANE99", "PRF116"};
+static int _itypes[]   = {0, cGasKinetics, cGRI30, cInterfaceKinetics, cEdgeKinetics, cAqueousKinetics, cMETHANE19Kinetics,\
+                          cETHANOL28Kinetics, cMETHANE13Kinetics, cDME30Kinetics, cHEPTANE52Kinetics, cISOOCTANE99Kinetics, cPRF116Kinetics};
 
 Kinetics* KineticsFactory::
 newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
@@ -105,6 +108,18 @@ newKinetics(XML_Node& phaseData, vector<ThermoPhase*> th)
         k = new DME30Kinetics;
         break;
 
+    case cHEPTANE52Kinetics:
+        k = new HEPTANE52Kinetics;
+        break;
+    
+    case cISOOCTANE99Kinetics:
+        k = new ISOOCTANE99Kinetics;
+        break;
+    
+    case cPRF116Kinetics:
+        k = new PRF116Kinetics;
+        break;
+        
     default:
         throw UnknownKineticsModel("KineticsFactory::newKinetics",
                                    kintype);
@@ -163,6 +178,19 @@ Kinetics* KineticsFactory::newKinetics(const string& model)
         //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
         break;
 
+    case cHEPTANE52Kinetics:
+        k = new HEPTANE52Kinetics;
+        //printf("\nYou are using the Lu and Law 19 species analytical mechanism for CH4\n");
+        break;
+      
+    case cISOOCTANE99Kinetics:
+        k = new ISOOCTANE99Kinetics;
+        break;
+    
+    case cPRF116Kinetics:
+        k = new PRF116Kinetics;
+        break;
+        
     default:
         throw UnknownKineticsModel("KineticsFactory::newKinetics",
                                    model);

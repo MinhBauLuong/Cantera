@@ -3,8 +3,11 @@ h_sources  = $(top_builddir)/include/cantera/kinetics/importKinetics.h \
              $(top_builddir)/include/cantera/kinetics/GRI_30_Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/METHANE19Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/ETHANOL28Kinetics.h \
+             $(top_builddir)/include/cantera/kinetics/HEPTANE52Kinetics.h \
+             $(top_builddir)/include/cantera/kinetics/ISOOCTANE99Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/METHANE13Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/DME30Kinetics.h \
+             $(top_builddir)/include/cantera/kinetics/PRF116Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/KineticsFactory.h \
              $(top_builddir)/include/cantera/kinetics/Kinetics.h \
              $(top_builddir)/include/cantera/kinetics/GasKinetics.h  \
@@ -27,8 +30,8 @@ h_sources  = $(top_builddir)/include/cantera/kinetics/importKinetics.h \
 #             $(top_builddir)/include/cantera/kinetics/solveSP.h 
 #             $(top_builddir)/include/cantera/kinetics/ImplicitSurfChem.h 
 
-cc_sources = AqueousKinetics.cpp FalloffFactory.cpp GRI_30_Kinetics.cpp \
-             METHANE19Kinetics.cpp ETHANOL28Kinetics.cpp METHANE13Kinetics.cpp DME30Kinetics.cpp \
+cc_sources = AqueousKinetics.cpp FalloffFactory.cpp GRI_30_Kinetics.cpp HEPTANE52Kinetics.cpp ISOOCTANE99Kinetics.cpp \
+             METHANE19Kinetics.cpp ETHANOL28Kinetics.cpp METHANE13Kinetics.cpp DME30Kinetics.cpp PRF116Kinetics.cpp \
              GasKinetics.cpp Group.cpp ImplicitSurfChem.cpp InterfaceKinetics.cpp \
              Kinetics.cpp KineticsFactory.cpp ReactionPath.cpp ReactionStoichMgr.cpp \
              importKinetics.cpp solveSP.cpp

@@ -1,14 +1,14 @@
 """
- A 28-species reduced mechanism for ethanol/air with NO formation
+ A 28-SPECIES REDUCED MECHANISM FOR ETHANOL/AIR WITH NO FORMATION
 
- References:
-    Zhang H., Hawkes E.R., Kook S., Luo Z., Lu T.F.,
-    "Computational investigations of the effects of thermal stratification in an ethanol-fuelled HCCI engine,"
-    Fuel, submitted.
+ REFERENCES:
+    ZHANG H., HAWKES E.R., KOOK S., LUO Z., LU T.F.,
+    "COMPUTATIONAL INVESTIGATIONS OF THE EFFECTS OF THERMAL STRATIFICATION IN AN ETHANOL-FUELLED HCCI ENGINE,"
+    FUEL, SUBMITTED.
 
-    Bhagatwala A., Chen J.H., Lu T.F.,
-    Direct numerical simulations of HCCI/SACI with ethanol,
-    Combust. Flame, 161 (7) 1826-1841, 2014.
+    BHAGATWALA A., CHEN J.H., LU T.F.,
+    DIRECT NUMERICAL SIMULATIONS OF HCCI/SACI WITH ETHANOL,
+    COMBUST. FLAME, 161 (7) 1826-1841, 2014.
 
 
 """
@@ -17,22 +17,22 @@ units(length='cm', time='s', quantity='mol', act_energy='cal/mol')
 
 ideal_gas(name='gas',
           elements="C H N O",
-          species="""h         h2        o         o2        oh
-                     h2o       ho2       h2o2      co        co2
-                     ch2o      ho2cho    o2cho     ch3o2h    ch3o2
-                     ch4       ch3       c2h5      c2h4      c2h3
-                     ch3cho    c2h5oh    o2c2h4oh  n         no
-                     no2       n2o       n2""",
+          species="""H         H2        O         O2        OH
+                     H2O       HO2       H2O2      CO        CO2
+                     CH2O      HO2CHO    O2CHO     CH3O2H    CH3O2
+                     CH4       CH3       C2H5      C2H4      C2H3
+                     CH3CHO    C2H5OH    O2C2H4OH  N         NO
+                     NO2       N2O       N2""",
           reactions='all',
-          transport='Mix',
           kinetics='ETHANOL28',
+          transport='Mix',
           initial_state=state(temperature=300.0, pressure=OneAtm))
 
 #-------------------------------------------------------------------------------
 # Species data
 #-------------------------------------------------------------------------------
 
-species(name='h',
+species(name='H',
         atoms='H:1',
         thermo=(NASA([300.00, 1000.00],
                      [ 2.50000000E+00,  0.00000000E+00,  0.00000000E+00,
@@ -47,7 +47,7 @@ species(name='h',
                                 well_depth=145.0),
         note='120186')
 
-species(name='h2',
+species(name='H2',
         atoms='H:2',
         thermo=(NASA([300.00, 1000.00],
                      [ 3.29812400E+00,  8.24944200E-04, -8.14301500E-07,
@@ -64,7 +64,7 @@ species(name='h2',
                                 rot_relax=280.0),
         note='121286')
 
-species(name='o',
+species(name='O',
         atoms='O:1',
         thermo=(NASA([300.00, 1000.00],
                      [ 2.94642900E+00, -1.63816600E-03,  2.42103200E-06,
@@ -79,7 +79,7 @@ species(name='o',
                                 well_depth=80.0),
         note='120186')
 
-species(name='o2',
+species(name='O2',
         atoms='O:2',
         thermo=(NASA([300.00, 1000.00],
                      [ 3.21293600E+00,  1.12748600E-03, -5.75615000E-07,
@@ -96,7 +96,7 @@ species(name='o2',
                                 rot_relax=3.8),
         note='121386')
 
-species(name='oh',
+species(name='OH',
         atoms='H:1 O:1',
         thermo=(NASA([300.00, 1710.00],
                      [ 3.41896226E+00,  3.19255801E-04, -3.08292717E-07,
@@ -109,9 +109,9 @@ species(name='oh',
         transport=gas_transport(geom='linear',
                                 diam=2.75,
                                 well_depth=80.0),
-        note='7/13/0rucic')
+        note='7/13/0RUCIC')
 
-species(name='h2o',
+species(name='H2O',
         atoms='H:2 O:1',
         thermo=(NASA([300.00, 1000.00],
                      [ 3.38684200E+00,  3.47498200E-03, -6.35469600E-06,
@@ -128,7 +128,7 @@ species(name='h2o',
                                 rot_relax=4.0),
         note='20387')
 
-species(name='ho2',
+species(name='HO2',
         atoms='H:1 O:2',
         thermo=(NASA([200.00, 1000.00],
                      [ 4.30179801E+00, -4.74912051E-03,  2.11582891E-05,
@@ -142,9 +142,9 @@ species(name='ho2',
                                 diam=3.458,
                                 well_depth=107.4,
                                 rot_relax=1.0),
-        note='l5/89')
+        note='L5/89')
 
-species(name='h2o2',
+species(name='H2O2',
         atoms='H:2 O:2',
         thermo=(NASA([300.00, 1000.00],
                      [ 3.38875400E+00,  6.56922600E-03, -1.48501300E-07,
@@ -160,7 +160,7 @@ species(name='h2o2',
                                 rot_relax=3.8),
         note='120186')
 
-species(name='co',
+species(name='CO',
         atoms='C:1 O:1',
         thermo=(NASA([300.00, 1429.00],
                      [ 3.19036352E+00,  8.94419972E-04, -3.24927563E-08,
@@ -177,7 +177,7 @@ species(name='co',
                                 rot_relax=1.8),
         note='29/11/04')
 
-species(name='co2',
+species(name='CO2',
         atoms='C:1 O:2',
         thermo=(NASA([300.00, 1380.00],
                      [ 2.57930490E+00,  8.24684987E-03, -6.42716047E-06,
@@ -194,7 +194,7 @@ species(name='co2',
                                 rot_relax=2.1),
         note='29/11/04')
 
-species(name='ch2o',
+species(name='CH2O',
         atoms='C:1 H:2 O:1',
         thermo=(NASA([300.00, 1486.00],
                      [ 3.00754197E+00,  3.04729496E-03,  5.25109246E-06,
@@ -208,9 +208,9 @@ species(name='ch2o',
                                 diam=3.59,
                                 well_depth=498.0,
                                 rot_relax=2.0),
-        note='6/29/04rusci')
+        note='6/29/04RUSCI')
 
-species(name='ho2cho',
+species(name='HO2CHO',
         atoms='C:1 H:2 O:3',
         thermo=(NASA([300.00, 1378.00],
                      [ 2.42464726E+00,  2.19706380E-02, -1.68705546E-05,
@@ -224,9 +224,9 @@ species(name='ho2cho',
                                 diam=3.97,
                                 well_depth=436.0,
                                 rot_relax=2.0),
-        note='6/26/95therm')
+        note='6/26/95THERM')
 
-species(name='o2cho',
+species(name='O2CHO',
         atoms='C:1 H:1 O:3',
         thermo=(NASA([300.00, 1368.00],
                      [ 3.96059309E+00,  1.06002279E-02, -5.25713351E-06,
@@ -240,9 +240,9 @@ species(name='o2cho',
                                 diam=3.97,
                                 well_depth=436.0,
                                 rot_relax=2.0),
-        note='6/26/95therm')
+        note='6/26/95THERM')
 
-species(name='ch3o2h',
+species(name='CH3O2H',
         atoms='C:1 H:4 O:2',
         thermo=(NASA([300.00, 1367.00],
                      [ 2.83880024E+00,  1.86096249E-02, -8.48165412E-06,
@@ -256,9 +256,9 @@ species(name='ch3o2h',
                                 diam=3.626,
                                 well_depth=481.8,
                                 rot_relax=1.0),
-        note='1/14/5therm')
+        note='1/14/5THERM')
 
-species(name='ch3o2',
+species(name='CH3O2',
         atoms='C:1 H:3 O:2',
         thermo=(NASA([300.00, 1365.00],
                      [ 3.80497590E+00,  9.80784660E-03, -3.90940624E-07,
@@ -272,9 +272,9 @@ species(name='ch3o2',
                                 diam=3.626,
                                 well_depth=481.8,
                                 rot_relax=1.0),
-        note='1/14/5therm')
+        note='1/14/5THERM')
 
-species(name='ch4',
+species(name='CH4',
         atoms='C:1 H:4',
         thermo=(NASA([300.00, 1462.00],
                      [ 3.72113020E+00, -2.50293289E-03,  1.90246534E-05,
@@ -291,7 +291,7 @@ species(name='ch4',
                                 rot_relax=13.0),
         note='29/11/04')
 
-species(name='ch3',
+species(name='CH3',
         atoms='C:1 H:3',
         thermo=(NASA([300.00, 1389.00],
                      [ 3.43858162E+00,  4.07752664E-03,  3.19830994E-07,
@@ -305,7 +305,7 @@ species(name='ch3',
                                 diam=3.8,
                                 well_depth=144.0))
 
-species(name='c2h5',
+species(name='C2H5',
         atoms='C:2 H:5',
         thermo=(NASA([300.00, 1387.00],
                      [ 1.32730217E+00,  1.76656753E-02, -6.14926558E-06,
@@ -319,9 +319,9 @@ species(name='c2h5',
                                 diam=4.35,
                                 well_depth=247.5,
                                 rot_relax=1.5),
-        note='8/4/4therm')
+        note='8/4/4THERM')
 
-species(name='c2h4',
+species(name='C2H4',
         atoms='C:2 H:4',
         thermo=(NASA([300.00, 1395.00],
                      [ 2.33879687E-01,  1.96334647E-02, -1.16833214E-05,
@@ -335,9 +335,9 @@ species(name='c2h4',
                                 diam=3.496,
                                 well_depth=238.4,
                                 rot_relax=1.5),
-        note='10/4/5therm')
+        note='10/4/5THERM')
 
-species(name='c2h3',
+species(name='C2H3',
         atoms='C:2 H:3',
         thermo=(NASA([300.00, 1395.00],
                      [ 1.25329724E+00,  1.56258370E-02, -1.07803879E-05,
@@ -351,9 +351,9 @@ species(name='c2h3',
                                 diam=3.721,
                                 well_depth=265.3,
                                 rot_relax=1.0),
-        note='10/4/5therm')
+        note='10/4/5THERM')
 
-species(name='ch3cho',
+species(name='CH3CHO',
         atoms='C:2 H:4 O:1',
         thermo=(NASA([300.00, 1377.00],
                      [ 1.77060035E+00,  1.84475161E-02, -7.24138162E-06,
@@ -367,9 +367,9 @@ species(name='ch3cho',
                                 diam=3.97,
                                 well_depth=436.0,
                                 rot_relax=2.0),
-        note='8/10/4therm')
+        note='8/10/4THERM')
 
-species(name='c2h5oh',
+species(name='C2H5OH',
         atoms='C:2 H:6 O:1',
         thermo=(NASA([300.00, 1395.00],
                      [ 1.79106094E-01,  3.09060081E-02, -1.93596697E-05,
@@ -383,9 +383,9 @@ species(name='c2h5oh',
                                 diam=4.41,
                                 well_depth=470.6,
                                 rot_relax=1.5),
-        note='8/9/4therm')
+        note='8/9/4THERM')
 
-species(name='o2c2h4oh',
+species(name='O2C2H4OH',
         atoms='C:2 H:5 O:3',
         thermo=(NASA([300.00, 1392.00],
                      [ 4.11839445E+00,  2.72240632E-02, -1.60824430E-05,
@@ -400,9 +400,9 @@ species(name='o2c2h4oh',
                                 well_depth=523.2,
                                 dipole=1.7,
                                 rot_relax=1.0),
-        note='2/14/95therm')
+        note='2/14/95THERM')
 
-species(name='n',
+species(name='N',
         atoms='N:1',
         thermo=(NASA([300.00, 1000.00],
                      [ 2.50307100E+00, -2.18001800E-05,  5.42052900E-08,
@@ -417,7 +417,7 @@ species(name='n',
                                 well_depth=71.4),
         note='120186')
 
-species(name='no',
+species(name='NO',
         atoms='N:1 O:1',
         thermo=(NASA([200.00, 1000.00],
                      [ 4.21859896E+00, -4.63988124E-03,  1.10443049E-05,
@@ -432,9 +432,9 @@ species(name='no',
                                 well_depth=97.53,
                                 polar=1.76,
                                 rot_relax=4.0),
-        note='rus89')
+        note='RUS89')
 
-species(name='no2',
+species(name='NO2',
         atoms='N:1 O:2',
         thermo=(NASA([200.00, 1000.00],
                      [ 3.94403120E+00, -1.58542900E-03,  1.66578120E-05,
@@ -448,9 +448,9 @@ species(name='no2',
                                 diam=3.5,
                                 well_depth=200.0,
                                 rot_relax=1.0),
-        note='l7/88')
+        note='L7/88')
 
-species(name='n2o',
+species(name='N2O',
         atoms='N:2 O:1',
         thermo=(NASA([300.00, 1000.00],
                      [ 2.54305800E+00,  9.49219300E-03, -9.79277500E-06,
@@ -466,7 +466,7 @@ species(name='n2o',
                                 rot_relax=1.0),
         note='121286')
 
-species(name='n2',
+species(name='N2',
         atoms='N:2',
         thermo=(NASA([300.00, 1000.00],
                      [ 3.29867700E+00,  1.40824000E-03, -3.96322200E-06,
@@ -482,9 +482,10 @@ species(name='n2',
                                 polar=1.76,
                                 rot_relax=4.0),
         note='121286')
+
 #-------------------------------------------------------------------------------
 # Reaction data
 #-------------------------------------------------------------------------------
 
 # Reaction 1
-reaction('2 o <=> o2', [0.000000e+00, 0.0, 0.0])
+reaction('2 O <=> O2', [0.000000e+00, 0.0, 0.0])
