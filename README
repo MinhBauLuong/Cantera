@@ -6,7 +6,12 @@ CANTERA WITH REDUCED CHEMISTRY
 Compilation Instructions:
 [sudo] apt install libblas*
 [sudo] apt install liblapack*
-git clone 
-scons build prefix=pathtowkdir/SVNCANTERA211/INSTALL_DIR optimize=n blas_lapack_libs=blas,lapack
+git clone https://github.com/sdesai9/Cantera.git
+cd Cantera
+scons build -j4 prefix=path_to_install_dir optimize=n blas_lapack_libs=blas,lapack
+[sudo] scons install -j4
+
+Notes:
+All the reduced mechanism files (.cti and .xml) are in the mechanisms folder. To use them, copy the .xml or .cti file to path_to_install_dir/share/cantera/data
 
 
