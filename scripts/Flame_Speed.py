@@ -5,10 +5,12 @@
 ###############################################################
 
 #import :
-
+import sys
+sys.path.append('/home/sq1/Build/Cantera-2.1.1/lib/python3.6/site-packages/cantera')
 from cantera import *
 from matplotlib.pylab import *
 import numpy as np
+import os
 #Functions :
 
 #################################################################
@@ -19,12 +21,13 @@ import numpy as np
 	#General
 p          =  20.0*one_atm                 # pressure
 tin        =   800.0               # unburned gas temperature
-phi        =   0.4
-
+phi        =   1.0
+if os.path.exists("baseflame000.xml"):
+  os.remove("baseflame000.xml")
 
 	#Initial grids, chosen to be 0.02cm long : 
 		# - Refined grid at inlet and outlet, 6 points in x-direction :
-initial_grid = [0.0, 0.0011, 0.0012, 0.013, 0.0198, 0.0199, 0.02] # m
+initial_grid = [0.0, 1e-6, 1.1e-6, 1.e-5, 2.e-4, 0.98e-3, 0.99e-3, 1e-3] # m
 		# - Uniform grid, 6 points in x-direction (import numpy):
 #initial_grid = 0.02*array([0.0, 0.2, 0.4, 0.6, 0.8, 1.0],'d') # m
 		# - Uniform grid of 300 points using numpy :
@@ -41,7 +44,7 @@ refine_grid = True                  # True to enable refinement, False to
                                     # disable 				   
 
 #Import gas phases with mixture transport model
-gas = Solution('dme30.xml')
+gas = Solution('dme39.xml')
 #################
 #Stoechiometry :
 
